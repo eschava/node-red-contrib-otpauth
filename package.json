@@ -1,6 +1,6 @@
 {
   "name" : "node-red-contrib-otpauth",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "One Time Password (HOTP/TOTP) generator node for Node-red",
   "main": "otpauth.js",
   "repository": {
