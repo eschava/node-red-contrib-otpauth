@@ -1,0 +1,66 @@
+<script type="text/javascript">
+    RED.nodes.registerType('otpauth',{
+        category: 'function',
+        color: '#E2D96E',
+        defaults: {
+            name: {value:""},
+            otptype: {value:"totp"},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "otpauth.png",
+        label: function() {
+            return this.name||"OTPAuth";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="otpauth">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-otptype"><i class="icon-tag"></i> Type</label>
+        <select id="node-input-otptype">
+            <option value="totp">Time-Based (TOTP)</option>
+            <option value="hotp">HMAC-based (HOTP)</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/html" data-help-name="otpauth">
+    <p>One Time Password (HOTP/TOTP) generator</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">string</span></dt>
+        <dd>Base32 secret (short version)</dd>
+        <dt>payload.secret <span class="property-type">string</span></dt>
+        <dd>Base32 secret</dd>
+        <dt class="optional">payload.issuer <span class="property-type">string</span></dt>
+        <dd>account provider (empty by default)</dd>
+        <dt class="optional">payload.label <span class="property-type">string</span></dt>
+        <dd>account label (OTPAuth by default)</dd>
+        <dt class="optional">payload.algorithm <span class="property-type">string</span></dt>
+        <dd>hashing algorithm (SHA1 by default, also could be one of SHA256,MD5)</dd>
+        <dt class="optional">payload.digits <span class="property-type">number</span></dt>
+        <dd>token length (6 by default)</dd>
+        <dt class="optional">payload.period <span class="property-type">number</span></dt>
+        <dd>token time-step duration (30 by default, for TOTP only)</dd>
+        <dt class="optional">payload.counter <span class="property-type">number</span></dt>
+        <dd>initial counter value (3 by default, for HOTP only)</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">String</span></dt>
+        <dd>generated password</dd>
+    </dl>
+
+    <h3>References</h3>
+    <ul>
+        <li><a href="https://github.com/eschava/node-red-contrib-otpauth">GitHub</a> - the node github repository</li>
+        <li><a href="https://hectorm.github.io/otpauth/index.html">OTPAuth</a> - parent library documentation</li>
+    </ul>
+</script>
