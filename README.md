@@ -3,12 +3,13 @@ One Time Password (HOTP/TOTP) generator node for Node-red
   
 ## Usage
 
-###Simple input 
+*Simple input*  
+
 **payload** of the incoming message contains Base32 secret
 
-###Advanced input
+*Advanced input*  
 
-**payload** of the incoming message could contain the next properties:
+**payload** of the incoming message is an object and could contain the next properties:
 - **secret** - Base32 secret (mandatory)
 - **issuer** - account provider (empty by default)
 - **label** - account label (OTPAuth by default)
@@ -18,7 +19,8 @@ One Time Password (HOTP/TOTP) generator node for Node-red
 - **counter** - initial counter value (0 by default, for HOTP only)
  
 
-###Output
+*Output*  
+
 **payload** of the output message contains generated password
 
 ## Version history
